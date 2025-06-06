@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация проекта: Система Управления Дроном на Orange Pi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-3xl font-bold">Документация проекта</h1>
+        <p class="text-sm mt-2">Система управления дроном на платформе Orange Pi с использованием голосового управления, распознавания речи и нейросетей.</p>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 md:px-12 py-6">
+
+        <!-- Общее описание -->
+        <section>
+            <h2 class="text-xl font-semibold">1. Общее описание проекта</h2>
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <p>Проект представляет собой систему управления дроном, основанную на одноплатном компьютере (например, Orange Pi). Система использует голосовое управление, распознавание речи и генерацию речи, а также обработку команд с помощью нейросетей, включая Ollama и Llama3.2.</p>
+                <p>Основные компоненты системы включают:</p>
+                <ul class="list-disc ml-6">
+                    <li>Распознавание речи с использованием Vosk</li>
+                    <li>Генерация речи с помощью Piper</li>
+                    <li>Обработка команд с использованием DroneCommandParser</li>
+                    <li>Обработка запросов и команд с использованием нейросети Ollama</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Техническая архитектура -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold">2. Техническая архитектура системы</h2>
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">Основные компоненты системы:</h3>
+                <ul class="list-disc ml-6">
+                    <li>Одноплатный компьютер (например, Orange Pi) подключен к дрону.</li>
+                    <li>Сервер на Flask для обработки команд и взаимодействия с системой.</li>
+                    <li>Распознавание речи с использованием Vosk (для команд и взаимодействия с пользователем).</li>
+                    <li>Генерация речи с помощью Piper для озвучивания ответов.</li>
+                    <li>Обработка команд и запросов с использованием Ollama (модели нейросетей, включая Llama3.2).</li>
+                </ul>
+                <h3 class="text-lg font-medium mt-4">Схема архитектуры:</h3>
+                <pre class="bg-gray-200 p-4 rounded text-xs overflow-auto">
+                    Пользователь
+                       ↓
+                Веб-интерфейс (HTML/Flask)
+                       ↓
+                Flask-сервер
+                       ↓
+                Модуль обработки команд (DroneCommandParser)
+                       ↓
+                Модуль распознавания речи (Vosk) ↔ Модуль генерации речи (Piper)
+                       ↓
+                Модуль обработки запросов (Ollama)
+                       ↓
+                Управление дроном
+                </pre>
+            </div>
+        </section>
+
+        <!-- Описание компонентов -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold">3. Описание компонентов системы</h2>
+
+            <!-- Vosk -->
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">Vosk - Распознавание речи</h3>
+                <p>Vosk используется для распознавания речи в реальном времени. Он преобразует аудиопоток в текстовые команды, которые затем обрабатываются системой.</p>
+                <pre class="bg-gray-200 p-4 rounded text-xs language-python overflow-auto">
+                    class VoskSpeechRecognizer:
+                        def __init__(self, model_path="vosk-model-small-ru-0.22"):
+                            self.model = vosk.Model(model_path)
+                            self.recognizer = vosk.KaldiRecognizer(self.model, 16000)
+                </pre>
+            </div>
+
+            <!-- Piper -->
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">Piper - Текст в речь</h3>
+                <p>Piper используется для синтеза речи, преобразуя текст в аудио. Это позволяет системе озвучивать ответы на команды.</p>
+                <pre class="bg-gray-200 p-4 rounded text-xs language-python overflow-auto">
+                    class PiperTTS:
+                        def __init__(self, model_path="voice_models/ru_RU/irina/ru_RU-irina-medium.onnx"):
+                            self.tts = piper.PiperVoice.load(model_path)
+                        
+                        def say(self, text, output_wav="output.wav"):
+                            with wave.open(output_wav, "wb") as wav_file:
+                                self.tts.synthesize(text, wav_file)
+                </pre>
+            </div>
+
+            <!-- Ollama -->
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">Ollama - Модели обработки запросов</h3>
+                <p>Ollama использует модели нейросетей (например, Llama3.2) для обработки текстовых запросов и генерации ответов. Модели помогают системе принимать решения и отвечать на запросы пользователя.</p>
+                <pre class="bg-gray-200 p-4 rounded text-xs language-python overflow-auto">
+                    class DroneBrain:
+                        def llm_query(self, prompt, system_prompt=None):
+                            payload = {
+                                "model": "llama3.2:3b",
+                                "prompt": prompt,
+                                "system": system_prompt
+                            }
+                            response = requests.post(self.LLM_URL, json=payload)
+                            return response.json().get("response", "")
+                </pre>
+            </div>
+
+            <!-- DroneCommandParser -->
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">DroneCommandParser - Обработка команд</h3>
+                <p>DroneCommandParser используется для обработки команд и их преобразования в формат, который может быть выполнен дроном.</p>
+                <pre class="bg-gray-200 p-4 rounded text-xs language-python overflow-auto">
+                    class DroneCommandParser:
+                        def make_context(self, user_command: str) -> str:
+                            context = "Ты - система управления дроном. Твоя задача - понять команду и преобразовать её в формальный запрос."
+                            for cmd in self.COMMANDS:
+                                context += f"- {cmd['команда']}: {cmd['пример']}\n"
+                            return context
+                </pre>
+            </div>
+        </section>
+
+        <!-- Возможность общения с системой -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold">4. Попробуйте пообщаться с дроном</h2>
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <form id="drone-form">
+                    <input type="text" id="user-input" placeholder="Введите команду или вопрос" class="border p-2 w-full rounded mb-4">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Отправить</button>
+                </form>
+                <div id="response" class="mt-4 text-lg text-gray-700">Ответ появится здесь...</div>
+            </div>
+        </section>
+
+        <!-- Графики и аналитика -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold">5. Графики и аналитика</h2>
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <h3 class="text-lg font-medium">Точность команд</h3>
+                <iframe src="/static/command_accuracy_visualization.html" class="w-full h-96 rounded" frameborder="0"></iframe>
+
+            </div>
+        </section>
+
+        <!-- Схема команд -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold">6. Схема команд и их синонимов</h2>
+            <div class="bg-white p-4 mt-4 rounded shadow-md">
+                <table class="table-auto w-full text-sm">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-left">Команда</th>
+                            <th class="px-4 py-2 text-left">Пример</th>
+                            <th class="px-4 py-2 text-left">Синонимы</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">Взлет</td>
+                            <td class="border px-4 py-2">"взлетай на 2 метра"</td>
+                            <td class="border px-4 py-2">"поднимись", "старт", "взлет"</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Движение вперед</td>
+                            <td class="border px-4 py-2">"лети вперёд 3 метра"</td>
+                            <td class="border px-4 py-2">"вперёд", "двигайся вперед"</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Поворот</td>
+                            <td class="border px-4 py-2">"повернись на 90 градусов"</td>
+                            <td class="border px-4 py-2">"развернись", "поворот"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-10">
+        <p>&copy; 2025 Управление дроном | Система на Orange Pi</p>
+    </footer>
+
+    <script>
+        // Функция обработки формы
+        document.getElementById('drone-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+            if (userInput) {
+                fetch('/process_command', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ input: userInput })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').innerText = 'Ответ: ' + data.response;
+                });
+            }
+        });
+    </script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+
+</body>
+</html>
+

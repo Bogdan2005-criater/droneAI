@@ -1,0 +1,1688 @@
+{
+  "summary": {
+    "total_tests": 200,
+    "passed_tests": 134,
+    "accuracy": "67.00%",
+    "total_time": "106.37 сек",
+    "avg_time_per_command": "0.5319 сек",
+    "error_distribution": {
+      "Неправильная команда": 33,
+      "Отсутствуют параметры": 14,
+      "Неправильное значение параметра: angle": 8,
+      "Неправильное значение параметра: duration": 2,
+      "Не распознана команда": 6,
+      "Неправильное значение параметра: distance": 3
+    }
+  },
+  "by_command": {
+    "move_forward": {
+      "total": 12,
+      "correct": 10,
+      "accuracy": "83.33%"
+    },
+    "move_up": {
+      "total": 15,
+      "correct": 10,
+      "accuracy": "66.67%"
+    },
+    "set_speed": {
+      "total": 14,
+      "correct": 9,
+      "accuracy": "64.29%"
+    },
+    "rotate": {
+      "total": 15,
+      "correct": 7,
+      "accuracy": "46.67%"
+    },
+    "move_down": {
+      "total": 16,
+      "correct": 16,
+      "accuracy": "100.00%"
+    },
+    "move_right": {
+      "total": 9,
+      "correct": 9,
+      "accuracy": "100.00%"
+    },
+    "land": {
+      "total": 14,
+      "correct": 14,
+      "accuracy": "100.00%"
+    },
+    "move_left": {
+      "total": 9,
+      "correct": 7,
+      "accuracy": "77.78%"
+    },
+    "move_backward": {
+      "total": 12,
+      "correct": 11,
+      "accuracy": "91.67%"
+    },
+    "fly_to_coordinates": {
+      "total": 14,
+      "correct": 0,
+      "accuracy": "0.00%"
+    },
+    "return_to_home": {
+      "total": 17,
+      "correct": 14,
+      "accuracy": "82.35%"
+    },
+    "hover": {
+      "total": 20,
+      "correct": 12,
+      "accuracy": "60.00%"
+    },
+    "follow_me": {
+      "total": 9,
+      "correct": 6,
+      "accuracy": "66.67%"
+    },
+    "takeoff": {
+      "total": 14,
+      "correct": 9,
+      "accuracy": "64.29%"
+    },
+    "stabilize": {
+      "total": 10,
+      "correct": 0,
+      "accuracy": "0.00%"
+    }
+  },
+  "details": [
+    {
+      "id": 1,
+      "command": "вперед на 10 м",
+      "expected": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 2,
+      "command": "набери высоту пять метр",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "5"
+        }
+      },
+      "actual": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "5"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 3,
+      "command": "лети со скоростью 10 метров в секунду",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 4,
+      "command": "развернись на 30 градусов",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "30"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "30"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 5,
+      "command": "опустись на шесть метров",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 6,
+      "command": "сместись вправо на два м",
+      "expected": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 7,
+      "command": "иди на посадку",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 8,
+      "command": "повернись",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "90"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "90"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 9,
+      "command": "поднимись выше на семь метров",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "7"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "7"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 10,
+      "command": "сместись вправо на десять м",
+      "expected": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 11,
+      "command": "вниз",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 12,
+      "command": "влево",
+      "expected": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 13,
+      "command": "двигайся назад шесть метров",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 14,
+      "command": "сместись вправо на 2 м",
+      "expected": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 15,
+      "command": "назад на 6 м",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 16,
+      "command": "gps точка 11.200269 -144.182268",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "11.200269",
+          "longitude": "-144.182268"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 17,
+      "command": "пролети вперед девять метр",
+      "expected": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 18,
+      "command": "лети к точке взлета",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 19,
+      "command": "gps точка 67.759008 -124.205355",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "67.759008",
+          "longitude": "-124.205355"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 20,
+      "command": "возвращайся на базу",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 21,
+      "command": "поднимись выше на пять метров",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "5"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "5"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 22,
+      "command": "измени скорость на 1",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "actual": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 23,
+      "command": "вверх",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 24,
+      "command": "gps точка 80.351472 -132.564872",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "80.351472",
+          "longitude": "-132.564872"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 25,
+      "command": "сместись влево на 4 метр",
+      "expected": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "4"
+        }
+      },
+      "actual": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "4"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 26,
+      "command": "поверни влево",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "45"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "90"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 27,
+      "command": "садись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 28,
+      "command": "вернись домой",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 29,
+      "command": "держи позицию тридцать секунд",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "30"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "3"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 30,
+      "command": "лети к координатам 52.667794, 140.160488",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "52.667794",
+          "longitude": "140.160488"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 31,
+      "command": "лети вперед",
+      "expected": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 32,
+      "command": "возвращайся на базу",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 33,
+      "command": "поверни влево",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "45"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "90"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 34,
+      "command": "снизь высоту на пять метр",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "5"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "5"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 35,
+      "command": "держи позицию тридцать секунд",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "30"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "3"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 36,
+      "command": "вернись домой",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 37,
+      "command": "преследуй меня",
+      "expected": {
+        "команда": "follow_me",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "follow_me",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 38,
+      "command": "пари на месте тридцать сек",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "30"
+        }
+      },
+      "actual": {
+        "команда": "unknown",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 39,
+      "command": "поднимись на 4 метров",
+      "expected": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "4"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "4"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 40,
+      "command": "лети со скоростью 2 метров в секунду",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 41,
+      "command": "вверх",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 42,
+      "command": "навигация на точку -20.695665 -148.415441",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "-20.695665",
+          "longitude": "-148.415441"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 43,
+      "command": "приземлись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 44,
+      "command": "сместись вправо на 1 м",
+      "expected": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 45,
+      "command": "зависни",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 46,
+      "command": "лети назад",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 47,
+      "command": "останови вращение",
+      "expected": {
+        "команда": "stabilize",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": 0
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 48,
+      "command": "снизь высоту на 6 метр",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "6"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 49,
+      "command": "снизь высоту на десять метр",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 50,
+      "command": "останови вращение",
+      "expected": {
+        "команда": "stabilize",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": 0
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 51,
+      "command": "сделай поворот на 45°",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "45"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "45"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 52,
+      "command": "приземлись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 53,
+      "command": "взлетай",
+      "expected": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "2"
+        }
+      },
+      "actual": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 54,
+      "command": "вниз",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 55,
+      "command": "пари на месте 5 сек",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "5"
+        }
+      },
+      "actual": {
+        "команда": "unknown",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 56,
+      "command": "стартуем на высоту 1 метр",
+      "expected": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "1"
+        }
+      },
+      "actual": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 57,
+      "command": "двигайся назад 10 метров",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 58,
+      "command": "поднимись на два метров",
+      "expected": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 59,
+      "command": "держи позицию 5 секунд",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "5"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "5"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 60,
+      "command": "останови вращение",
+      "expected": {
+        "команда": "stabilize",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": 0
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 61,
+      "command": "направо",
+      "expected": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_right",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 62,
+      "command": "опустись на 9 метров",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 63,
+      "command": "вниз",
+      "expected": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_down",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 64,
+      "command": "приземлись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 65,
+      "command": "вперед на девять м",
+      "expected": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "9"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 66,
+      "command": "преследуй меня",
+      "expected": {
+        "команда": "follow_me",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "follow_me",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 67,
+      "command": "установи скорость 1 м/с",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "actual": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 68,
+      "command": "возвращайся на базу",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 69,
+      "command": "лети к координатам 31.447661, 86.943718",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "31.447661",
+          "longitude": "86.943718"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 70,
+      "command": "лети назад",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 71,
+      "command": "gps точка -69.458401 5.312984",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "-69.458401",
+          "longitude": "5.312984"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 72,
+      "command": "правый поворот на 60°",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "60"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "60"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 73,
+      "command": "лети со скоростью 10 метров в секунду",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "10"
+        }
+      },
+      "actual": {
+        "команда": "move_forward",
+        "параметры": {
+          "distance": "10"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 74,
+      "command": "пари на месте 20 сек",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "20"
+        }
+      },
+      "actual": {
+        "команда": "unknown",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 75,
+      "command": "зависни",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 76,
+      "command": "двигайся влево два метров",
+      "expected": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 77,
+      "command": "иди на посадку",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 78,
+      "command": "взлетай",
+      "expected": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "2"
+        }
+      },
+      "actual": {
+        "команда": "takeoff",
+        "параметры": {
+          "height": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 79,
+      "command": "вверх",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 80,
+      "command": "вверх",
+      "expected": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_up",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 81,
+      "command": "зависни",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 82,
+      "command": "вернись домой",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 83,
+      "command": "измени скорость на 1",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "actual": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 84,
+      "command": "останови вращение",
+      "expected": {
+        "команда": "stabilize",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": 0
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 85,
+      "command": "иди на посадку",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 86,
+      "command": "назад на два м",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 87,
+      "command": "лети к координатам 74.474888, 104.997924",
+      "expected": {
+        "команда": "fly_to_coordinates",
+        "параметры": {
+          "latitude": "74.474888",
+          "longitude": "104.997924"
+        }
+      },
+      "actual": {
+        "команда": "fly_to_coordinates",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 88,
+      "command": "приземлись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 89,
+      "command": "возвращайся на базу",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 90,
+      "command": "влево",
+      "expected": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "actual": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "1"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 91,
+      "command": "двигайся назад 2 метров",
+      "expected": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "actual": {
+        "команда": "move_backward",
+        "параметры": {
+          "distance": "2"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 92,
+      "command": "зависни",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 93,
+      "command": "поверни вправо",
+      "expected": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "45"
+        }
+      },
+      "actual": {
+        "команда": "rotate",
+        "параметры": {
+          "angle": "90"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 94,
+      "command": "садись",
+      "expected": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "land",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 95,
+      "command": "зависни",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "actual": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "10"
+        }
+      },
+      "correct": true
+    },
+    {
+      "id": 96,
+      "command": "налево на восемь м",
+      "expected": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "8"
+        }
+      },
+      "actual": {
+        "команда": "move_left",
+        "параметры": {
+          "distance": "7"
+        }
+      },
+      "correct": false
+    },
+    {
+      "id": 97,
+      "command": "вернись домой",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 98,
+      "command": "возвращайся на базу",
+      "expected": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "actual": {
+        "команда": "return_to_home",
+        "параметры": {}
+      },
+      "correct": true
+    },
+    {
+      "id": 99,
+      "command": "пари на месте 15 сек",
+      "expected": {
+        "команда": "hover",
+        "параметры": {
+          "duration": "15"
+        }
+      },
+      "actual": {
+        "команда": "unknown",
+        "параметры": {}
+      },
+      "correct": false
+    },
+    {
+      "id": 100,
+      "command": "измени скорость на 8",
+      "expected": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "8"
+        }
+      },
+      "actual": {
+        "команда": "set_speed",
+        "параметры": {
+          "speed": "8"
+        }
+      },
+      "correct": true
+    }
+  ]
+}
