@@ -1,4 +1,4 @@
-
+[Alt text](https://example.com/path/to/image.png)
 
 # Система Управления Дроном на Orange Pi
 
