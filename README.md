@@ -1,4 +1,4 @@
-[Alt text](https://github.com/Bogdan2005-criater/droneAI/blob/main/2025060604056.png)
+[Alt text](2025060604056.png)
 
 # Система Управления Дроном на Orange Pi
 
